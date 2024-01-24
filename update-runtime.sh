@@ -16,6 +16,10 @@ case $key in
     scribe=true
     shift
     ;;
+    --cpu)
+    cpuonly=true
+    shift
+    ;;
     *)    # unknown option
     echo "Unknown option: $key"
     exit 1
@@ -35,6 +39,8 @@ bin/micromamba create --no-shortcuts -r conda -n linux -f ${CONDA_ENVIRONMENT_FI
 if [ "$hordelib" = true ]; then
  bin/micromamba run -r conda -n linux python -s -m pip uninstall -y hordelib horde_model_reference
  bin/micromamba run -r conda -n linux python -s -m pip install hordelib horde_model_reference
+elif [ "$cpuonly" = true ]; then
+bin/micromamba run -r conda -n linux python -s -m pip install -r requirements.cpu.txt
 else
  bin/micromamba run -r conda -n linux python -s -m pip install -r requirements.txt
 fi
