@@ -43,7 +43,10 @@ def download_all_models(purge_unused_loras: bool = False) -> None:
     _ = get_interrogator_no_blip()
     del _
 
-    hordelib.initialise(extra_comfyui_args=["--cpu"])
+    hordelib.initialise(
+        extra_comfyui_args=["--cpu"],
+        force_normal_vram_mode=False
+    )
     from hordelib.shared_model_manager import SharedModelManager
 
     SharedModelManager.load_model_managers()

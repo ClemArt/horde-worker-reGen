@@ -47,6 +47,7 @@ def start_inference_process(
                     process_id=process_id,
                     logging_verbosity=0,
                     extra_comfyui_args=["--cpu"],
+                    force_normal_vram_mode=False,
                 )
         except Exception as e:
             logger.critical(f"Failed to initialise hordelib: {type(e).__name__} {e}")
@@ -99,6 +100,7 @@ def start_safety_process(
                     process_id=process_id,
                     logging_verbosity=0,
                     extra_comfyui_args=["--cpu"],
+                    force_normal_vram_mode=False,
                 )
         except Exception as e:
             logger.critical(f"Failed to initialise hordelib: {type(e).__name__} {e}")
